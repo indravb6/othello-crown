@@ -1,0 +1,4 @@
+# authentication
+jwt.key = 6DZAOAwY11w2fmR8VGbc9zzggXXHWaVPhhwlwUzS1
+
+service.scoreboard  = https://localhost:3002/

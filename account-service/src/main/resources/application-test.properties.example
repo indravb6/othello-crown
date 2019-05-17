@@ -1,0 +1,10 @@
+# database config
+spring.jpa.hibernate.ddl-auto = create-drop
+spring.datasource.url = jdbc:postgresql://postgres:5432/othellocrown_account_test
+spring.datasource.username = postgres
+spring.datasource.password =
+spring.jpa.show-sql = true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# authentication
+jwt.key = 6DZAOAwY11w2fmR8VGbc9zzggXXHWaVPhhwlwUzS1

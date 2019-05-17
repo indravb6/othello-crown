@@ -1,0 +1,33 @@
+stages:
+  - test
+  - deploy
+
+test:
+  image: java:8
+  before_script:
+    - chmod +x gradlew
+    - cp src/main/resources/application-test.properties.example src/main/resources/application-test.properties
+  script:
+    - ./gradlew test --stacktrace
+    - ./gradlew jacocoTestReport
+    - cat build/reports/jacoco/test/html/index.html
+  only:
+    - merge_requests
+    - master
+
+deploy:
+  stage: deploy
+  image: ruby:2.3
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+    - cp src/main/resources/application.properties.example src/main/resources/application.properties
+    - sed -i "s/{JWT_KEY}/$JWT_KEY/g" src/main/resources/application.properties
+    - dpl --provider=heroku --app=$HEROKU_APPNAME --api-key=$HEROKU_APIKEY --skip-cleanup
+  environment:
+    name: production
+    url: $HEROKU_APP_HOST
+  only:
+    - master

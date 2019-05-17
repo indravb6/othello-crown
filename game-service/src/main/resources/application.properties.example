@@ -1,0 +1,7 @@
+# server config
+# server.port = 3000
+service.scoreboard = https://othello-crown-score-service.herokuapp.com/
+spring.profiles.active = production
+
+# authentication
+jwt.key = {JWT_KEY}

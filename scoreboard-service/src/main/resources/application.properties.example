@@ -1,0 +1,12 @@
+# database config
+spring.jpa.hibernate.ddl-auto = update
+spring.datasource.url = jdbc:postgresql://{DB_HOST}:{DB_PORT}/{DB_NAME}
+spring.datasource.username = {DB_USER}
+spring.datasource.password = {DB_PASS}
+spring.jpa.show-sql = true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# server config
+# server.port = 3002
+
+appKey = {JWT_KEY}
